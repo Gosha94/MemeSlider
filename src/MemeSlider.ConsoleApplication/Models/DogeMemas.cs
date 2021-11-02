@@ -12,7 +12,7 @@ namespace MemeSlider.ConsoleApplication.Models
         public DogeMemas()
         {
 
-            this.ConcreteMemasName = "DogeMemas";
+            this.ConcreteMemasName = "Doge";
 
             this.ConcreteMemasView =
             @"

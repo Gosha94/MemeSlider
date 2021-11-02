@@ -12,10 +12,14 @@ namespace MemeSlider.ConsoleApplication.View
     {
         
         internal static void HelloFromConsole() => Console.WriteLine("Hello from .NET Core MemeSlider!");
-        
+
+        internal static void ShowAllMemeNamesInApp() => Console.WriteLine("Below is a list of all the memes in the application:");
+
         internal static void SearchInfoAboutMemeFromConsole(string userInputMemeName) => Console.WriteLine($"You wanted to see a meme: {userInputMemeName}");
 
-        internal static void ViewMemeInConsole(string memeView) => Console.WriteLine($"{memeView}");
+        internal static void ViewMemeNameInConsole(string memeName) => Console.WriteLine($"{memeName}");
+
+        internal static void ViewMemeInConsole(string memeView) => Console.WriteLine($"{memeView}");        
 
         internal static void ErrorFindMemeFromConsole(string userInputMemeName) => Console.WriteLine($"Sorry but your meme: {userInputMemeName} not found :(");
 

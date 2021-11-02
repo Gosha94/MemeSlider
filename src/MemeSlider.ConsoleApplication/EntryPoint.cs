@@ -13,10 +13,14 @@ namespace MemeSlider.ConsoleApplication
 
         static void Main(string[] args)
         {
+
             MemaseInjection();
             FillMemeContainer();
 
             ConsoleView.HelloFromConsole();
+            ConsoleView.ShowAllMemeNamesInApp();
+
+            ShowAllMemeNames();
 
             var inputMemeName = ValidateUserInput(args);
 
@@ -35,6 +39,7 @@ namespace MemeSlider.ConsoleApplication
             ConsoleView.GetEnvironmentInfo();
 
             ConsoleView.ByeByeFromConsole();
+
         }
 
         #region Private Methods
@@ -44,9 +49,12 @@ namespace MemeSlider.ConsoleApplication
             _memasDependenciesList = new List<IMemas>()
             {
                 new DogeMemas(),
-                new PokerFaceMemas(),
+                new NyanCatMemas(),
                 new OldSkullMemas(),
-                new RussianBearMemas()
+                new PokerFaceMemas(),                
+                new RussianBearMemas(),
+                new SurprisedCatMemas(),
+                new WallMemas()
             };
 
         static void FillMemeContainer()
@@ -58,6 +66,16 @@ namespace MemeSlider.ConsoleApplication
                 {
                     var lowerMemosName = x.ConcreteMemasName.ToLower();
                     _memasContainer.Add(lowerMemosName, x.ConcreteMemasView);
+                }
+                );
+        }
+
+        static void ShowAllMemeNames()
+        {
+            _memasDependenciesList
+                .ForEach(x =>
+                {
+                    ConsoleView.ViewMemeNameInConsole(x.ConcreteMemasName);
                 }
                 );
         }
