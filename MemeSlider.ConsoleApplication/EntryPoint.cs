@@ -43,10 +43,10 @@ namespace MemeSlider.ConsoleApplication
             =>
             _memasDependenciesList = new List<IMemas>()
             {
-                new HandsomeSquidwardMemas(),
+                new DogeMemas(),
                 new PokerFaceMemas(),
-                new SaitamaMemas(),
-                new VoyakaMemas()
+                new OldSkullMemas(),
+                new RussianBearMemas()
             };
 
         static void FillMemeContainer()
