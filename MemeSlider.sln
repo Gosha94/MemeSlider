@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemeSlider.ConsoleApplication", "MemeSlider.ConsoleApplication\MemeSlider.ConsoleApplication.csproj", "{2BBC7E5A-2DDD-4769-9182-910BC85DF211}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83E97C5E-7EE3-448B-90BD-F7AFAB713435}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{861283B2-A2B4-4FC0-8F42-D47D715144FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemeSlider.ConsoleApplication", "MemeSlider.ConsoleApplication\MemeSlider.ConsoleApplication.csproj", "{FFAE7BC4-A2AB-4DA7-A823-C73E65497EC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +15,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2BBC7E5A-2DDD-4769-9182-910BC85DF211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BBC7E5A-2DDD-4769-9182-910BC85DF211}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BBC7E5A-2DDD-4769-9182-910BC85DF211}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BBC7E5A-2DDD-4769-9182-910BC85DF211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFAE7BC4-A2AB-4DA7-A823-C73E65497EC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFAE7BC4-A2AB-4DA7-A823-C73E65497EC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFAE7BC4-A2AB-4DA7-A823-C73E65497EC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFAE7BC4-A2AB-4DA7-A823-C73E65497EC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FFAE7BC4-A2AB-4DA7-A823-C73E65497EC8} = {83E97C5E-7EE3-448B-90BD-F7AFAB713435}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {246C0C4E-2E8D-43D2-844D-98BC0A92337D}

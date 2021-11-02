@@ -1,8 +1,7 @@
 {
   "profiles": {
     "MemeSlider.ConsoleApplication": {
-      "commandName": "Project",
-      "commandLineArgs": "Saitama"
+      "commandName": "Project"
     },
     "Docker": {
       "commandName": "Docker"
