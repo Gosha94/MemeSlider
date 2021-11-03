@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MemeSlider.ConsoleApplication.View;
 using MemeSlider.ConsoleApplication.Models;
 using MemeSlider.ConsoleApplication.Contracts;
+using System.Linq;
 
 namespace MemeSlider.ConsoleApplication
 {
@@ -23,21 +24,42 @@ namespace MemeSlider.ConsoleApplication
             ShowAllMemeNames();
 
             var inputMemeName = ValidateUserInput(args);
+            var isUserWantExitFlag = false;
 
-            ConsoleView.SearchInfoAboutMemeFromConsole(inputMemeName);
+            while (!isUserWantExitFlag)
+            {
+                ConsoleView.NormalizeConsole();
 
-            if (IsMemeInContainer(inputMemeName))
-            {
-                var memeForView = _memasContainer[inputMemeName];
-                ConsoleView.ViewMemeInConsole(memeForView);
-            }
-            else
-            {
-                ConsoleView.ErrorFindMemeFromConsole(inputMemeName);
+                ConsoleView.SearchInfoAboutMemeFromConsole(inputMemeName);
+
+                if (IsMemeInContainer(inputMemeName))
+                {
+                    var memeForView = _memasContainer[inputMemeName];
+                    ConsoleView.ViewMemeInConsole(memeForView);
+                }
+                else
+                {
+                    ConsoleView.DrawDanger();
+                    ConsoleView.ErrorFindMemeFromConsole(inputMemeName);
+                }
+
+                ConsoleView.AskToContinue();
+
+                if (String.Compare(ConsoleView.ReadConsoleUserInput().ToLower(), "n") == 0)
+                {
+                    isUserWantExitFlag = true;
+                }
+                else
+                {
+                    Console.WriteLine("Please insert Meme Name:");
+
+                    var newInput = ConsoleView.ReadConsoleUserInput();
+                    inputMemeName = ValidateUserInput(newInput);
+                }
+
             }
 
             ConsoleView.GetEnvironmentInfo();
-
             ConsoleView.ByeByeFromConsole();
 
         }
@@ -82,6 +104,14 @@ namespace MemeSlider.ConsoleApplication
 
         static string ValidateUserInput(string[] argumentsFromConsole)
             => String.Join("", argumentsFromConsole).ToLower();
+
+        static string ValidateUserInput(string inputFromUser)
+            => new string(
+                    inputFromUser
+                        .ToCharArray()
+                            .Where(ch => !Char.IsWhiteSpace(ch))
+                                .ToArray()
+                ).ToLower();
 
         static bool IsMemeInContainer(string userMemeName)
             => _memasContainer.ContainsKey(userMemeName);

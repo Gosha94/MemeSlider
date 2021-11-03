@@ -1,5 +1,5 @@
 # Описываем финальный слой с Runtime средой выполнения
-FROM mcr.microsoft.com/dotnet/runtime:3.1 AS releaseLayer
+FROM mcr.microsoft.com/dotnet/runtime:3.1 AS ReleaseLayer
 
 # Копируем публикацию из папки ПК в папку на создаваемом образе
 COPY bin/Release/netcoreapp3.1/publish /Release
