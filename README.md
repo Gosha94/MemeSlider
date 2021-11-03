@@ -18,7 +18,7 @@
   
     docker pull gosha94/netcore:memeslider1.0
   
-  2) Создаем локальный контейнер из локального образа, сразу запускаем с командой, включающей имя мемосика (PokerFace) :
+  2) Создаем контейнер из локального образа, сразу запускаем с командой, включающей имя мемосика (PokerFace) :
   
     docker run -it --rm --name MemeSliderContainer gosha94/netcore:memeslider1.0 PokerFace
 
