@@ -1,21 +1,13 @@
-#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# Описываем финальный слой с Runtime средой выполнения
+FROM mcr.microsoft.com/dotnet/runtime:3.1 AS releaseLayer
 
-FROM mcr.microsoft.com/dotnet/runtime:3.1 AS base
-WORKDIR /app
+# Копируем публикацию из папки ПК в папку на создаваемом образе
+COPY bin/Release/netcoreapp3.1/publish /Release
+# Сразу заходим в папку с приложением, когда создается контейнер, для удобства работы
+WORKDIR /Release
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
-WORKDIR /source
-COPY ["src/MemeSlider.ConsoleApplication/MemeSlider.ConsoleApplication.csproj", "source/NetCoreMemeSlider/"]
-RUN dotnet restore "source/NetCoreMemeSlider/MemeSlider.ConsoleApplication.csproj"
-COPY . .
-WORKDIR "/source/src/MemeSlider.ConsoleApplication"
-RUN dotnet build "MemeSlider.ConsoleApplication.csproj" -c Release -o /app/build
+# Запуск контейнеров в режиме чтения, без диагностики и отладки
+ENV DOTNET_EnableDiagnostics=0
 
-FROM build AS publish
-RUN dotnet publish "MemeSlider.ConsoleApplication.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-
-ENTRYPOINT ["dotnet", "MemeSlider.ConsoleApplication.dll", "--meme"]
+# Устанавливаем точку входа в библиотеку
+ENTRYPOINT ["dotnet", "MemeSlider.ConsoleApplication.dll"]
